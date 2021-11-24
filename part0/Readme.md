@@ -26,3 +26,12 @@ Create a diagram depicting the situation where the user goes to the single page 
 #### Diagram
 
 ![Exercise 0.5 Entering single page app](assets/FSOC_P0.5.png)
+
+### Exercise 0.6
+
+**Instructions:**
+Create a diagram depicting the situation where the user creates a new note using the single page version of the app.
+
+#### Diagram
+
+![Exercise 0.6 New note SPA](assets/FSOC_P0.6.png)
