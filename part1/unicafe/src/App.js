@@ -5,6 +5,7 @@ const Header = () => (
     <h1>Unicafe feedback collection</h1>
   </div>
 );
+// Button component was already extracted since 1.6
 const Button = ({ handleClick, text }) => (
   <button onClick={handleClick}>{text}</button>
 );
@@ -26,30 +27,24 @@ const Statistics = ({ good, neutral, bad }) => {
   return (
     <div>
       <h2>Statistics</h2>
-      <div>
-        <p>
-          Total reviews: <b>{total}</b>
-        </p>
-      </div>
-      <div>
-        <p>Good reviews: {good}</p>
-      </div>
-      <div>
-        <p>Neutral Reviews: {neutral}</p>
-      </div>
-      <div>
-        <p>Bad Reviews: {bad}</p>
-      </div>
-      <div>
-        <p>Average: {avg}</p>
-      </div>
-      <div>
-        <p>Positive: {positive} %</p>
-      </div>
+      <Statline text="Good" value={good} />
+      <Statline text="Neutral" value={neutral} />
+      <Statline text="Bad" value={bad} />
+      <Statline text="Total" value={total} />
+      <Statline text="Average" value={avg} />
+      <Statline text="Positive" value={positive} />
     </div>
   );
 };
-
+const Statline = ({ text, value }) => {
+  return (
+    <div>
+      <p>
+        <b>{text}</b> : {value}
+      </p>
+    </div>
+  );
+};
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0);
