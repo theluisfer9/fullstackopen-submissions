@@ -8,7 +8,7 @@ const Header = () => (
 const Button = ({ handleClick, text }) => (
   <button onClick={handleClick}>{text}</button>
 );
-
+// The statistics component was here since exercise 1.6
 const Statistics = ({ good, neutral, bad }) => {
   const total = good + neutral + bad;
   const avg = (good - bad) / total;
