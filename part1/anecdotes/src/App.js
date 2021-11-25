@@ -12,11 +12,15 @@ const App = () => {
   ];
 
   const [selected, setSelected] = useState(Math.round(Math.random() * 6));
+  const [votes, setVotes] = useState([]);
 
   return (
     <>
       <h1>Today's random anecdote:</h1>
       <p>{anecdotes[selected]}</p>
+      <h3>
+        This anecdote has: <b>{votes[selected] || 0}</b> votes
+      </h3>
       <button
         onClick={() => {
           const rnd = Math.round(Math.random() * 6);
@@ -25,6 +29,15 @@ const App = () => {
         }}
       >
         Click for a new random anecdote
+      </button>
+      <button
+        onClick={() => {
+          const copy = [...votes];
+          copy[selected] = copy[selected] + 1 || 1;
+          setVotes(copy);
+        }}
+      >
+        Click to vote for this anecdote
       </button>
     </>
   );
