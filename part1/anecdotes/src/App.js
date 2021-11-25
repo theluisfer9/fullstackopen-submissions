@@ -13,6 +13,7 @@ const App = () => {
 
   const [selected, setSelected] = useState(Math.round(Math.random() * 6));
   const [votes, setVotes] = useState([]);
+  const [maxVotes, setMaxVotes] = useState({ index: selected, votes: 0 });
 
   return (
     <>
@@ -35,10 +36,19 @@ const App = () => {
           const copy = [...votes];
           copy[selected] = copy[selected] + 1 || 1;
           setVotes(copy);
+          // Check if new vote is the highest
+          if (copy[selected] > maxVotes.votes) {
+            setMaxVotes({ index: selected, votes: copy[selected] });
+          }
         }}
       >
         Click to vote for this anecdote
       </button>
+      <h1>Anecdote with the most votes:</h1>
+      <p>{anecdotes[maxVotes.index]}</p>
+      <h3>
+        With <b>{maxVotes.votes}</b> votes
+      </h3>
     </>
   );
 };
